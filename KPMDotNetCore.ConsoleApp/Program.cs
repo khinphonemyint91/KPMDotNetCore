@@ -38,11 +38,14 @@ Console.WriteLine("Hello, World!");
 
 //ADO.Net Read
 //CRUD
-AdoDotNetExample    adoDotNetExample = new AdoDotNetExample();
+//AdoDotNetExample    adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Read();
 //adoDotNetExample.Create("title", "author", "content");
 //adoDotNetExample.Update(8, "test title", "test author", "test content");
 //adoDotNetExample.Delete(8);
-adoDotNetExample.Edit(8);
-adoDotNetExample.Edit(7);
+//adoDotNetExample.Edit(8);
+//adoDotNetExample.Edit(7);
+
+DapperExample dapperexample=new DapperExample();
+dapperexample.Run();
 Console.ReadLine();
