@@ -35,7 +35,7 @@ namespace KPMDotNetCore.ConsoleApp
             }
         }
 
-        public void Edit(int id)
+        private void Edit(int id)
         {
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
            var item= db.Query<BlogDto>("select * from Tbl_Blog where BlogId=@BlogId",new BlogDto { BlogId=id}).FirstOrDefault();
@@ -52,7 +52,7 @@ namespace KPMDotNetCore.ConsoleApp
 
         }
 
-        public void Create(string title, string author, string content)
+        private void Create(string title, string author, string content)
         {
             var item = new BlogDto 
             { 
@@ -75,7 +75,7 @@ namespace KPMDotNetCore.ConsoleApp
             Console.WriteLine(message);
 
         }
-        public void Update(int id,string title, string author, string content)
+        private void Update(int id,string title, string author, string content)
         {
             var item = new BlogDto
             {   
@@ -99,7 +99,7 @@ namespace KPMDotNetCore.ConsoleApp
 
         }
 
-        public void Delete(int id)
+        private void Delete(int id)
         {
             var item = new BlogDto
             {
