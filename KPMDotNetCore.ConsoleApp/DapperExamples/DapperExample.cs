@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using KPMDotNetCore.ConsoleApp.Dto;
+using KPMDotNetCore.ConsoleApp.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +10,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KPMDotNetCore.ConsoleApp
+namespace KPMDotNetCore.ConsoleApp.DapperExamples
 {
     internal class DapperExample
     {
@@ -23,8 +25,8 @@ namespace KPMDotNetCore.ConsoleApp
         }
         public void Read()
         {
-          using  IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-            List<BlogDto> lst = db.Query < BlogDto>("select * from Tbl_Blog").ToList();
+            using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
+            List<BlogDto> lst = db.Query<BlogDto>("select * from Tbl_Blog").ToList();
             foreach (BlogDto item in lst)
             {
                 Console.WriteLine(item.BlogId);
@@ -38,7 +40,7 @@ namespace KPMDotNetCore.ConsoleApp
         private void Edit(int id)
         {
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-           var item= db.Query<BlogDto>("select * from Tbl_Blog where BlogId=@BlogId",new BlogDto { BlogId=id}).FirstOrDefault();
+            var item = db.Query<BlogDto>("select * from Tbl_Blog where BlogId=@BlogId", new BlogDto { BlogId = id }).FirstOrDefault();
             if (item is null)
             {
                 Console.WriteLine("No data found");
@@ -54,9 +56,11 @@ namespace KPMDotNetCore.ConsoleApp
 
         private void Create(string title, string author, string content)
         {
-            var item = new BlogDto 
-            { 
-                BlogTitle=title,BlogAuthor=author,BlogContent=content
+            var item = new BlogDto
+            {
+                BlogTitle = title,
+                BlogAuthor = author,
+                BlogContent = content
             };
 
             string query = @"INSERT INTO [dbo].[Tbl_Blog]
@@ -69,17 +73,17 @@ namespace KPMDotNetCore.ConsoleApp
            ,@BlogContent)";
 
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-            int result=db.Execute(query,item);
+            int result = db.Execute(query, item);
 
             string message = result > 0 ? "Saving Successful." : "Saving Failed.";
             Console.WriteLine(message);
 
         }
-        private void Update(int id,string title, string author, string content)
+        private void Update(int id, string title, string author, string content)
         {
             var item = new BlogDto
-            {   
-                BlogId=id,
+            {
+                BlogId = id,
                 BlogTitle = title,
                 BlogAuthor = author,
                 BlogContent = content

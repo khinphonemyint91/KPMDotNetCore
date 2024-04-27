@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KPMDotNetCore.ConsoleApp.Dto;
 
-namespace KPMDotNetCore.ConsoleApp;
+namespace KPMDotNetCore.ConsoleApp.EFCoreExamples;
 
 internal class EFCoreExample
 {
 
     private readonly AppDbContext db = new AppDbContext();
-    public void Run() {
+    public void Run()
+    {
         Read();
         //Edit(1);
         //Edit(11);
@@ -20,7 +22,7 @@ internal class EFCoreExample
     }
     private void Read()
     {
-        var lst=db.Blogs.ToList();
+        var lst = db.Blogs.ToList();
         foreach (BlogDto item in lst)
         {
             Console.WriteLine(item.BlogId);
@@ -33,8 +35,8 @@ internal class EFCoreExample
 
     private void Edit(int id)
     {
-       var item= db.Blogs.FirstOrDefault(x => x.BlogId == id);
-        if(item is null)
+        var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
+        if (item is null)
         {
             Console.WriteLine("No data found");
             return;
@@ -71,10 +73,10 @@ internal class EFCoreExample
             return;
         }
         item.BlogTitle = title;
-        item.BlogAuthor= author;
+        item.BlogAuthor = author;
         item.BlogContent = content;
 
-        int result=db.SaveChanges();
+        int result = db.SaveChanges();
         string message = result > 0 ? "Updating Successful." : "Updating Failed.";
         Console.WriteLine(message);
 
@@ -94,4 +96,4 @@ internal class EFCoreExample
         Console.WriteLine(message);
     }
 
-    }
+}

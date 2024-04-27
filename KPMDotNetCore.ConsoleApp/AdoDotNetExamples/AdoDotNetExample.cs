@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection.Metadata;
 
-namespace KPMDotNetCore.ConsoleApp
+namespace KPMDotNetCore.ConsoleApp.AdoDotNetExamples
 {
     internal class AdoDotNetExample
     {
@@ -56,7 +56,7 @@ namespace KPMDotNetCore.ConsoleApp
             sqlDataAdapter.Fill(dt);
 
             connection.Close();
-           if (dt.Rows.Count == 0)
+            if (dt.Rows.Count == 0)
             {
                 Console.WriteLine("No Data Found.");
                 return;
@@ -70,7 +70,7 @@ namespace KPMDotNetCore.ConsoleApp
             Console.WriteLine("-----------------------------------------------");
 
         }
-        public void Create (string title,string author,string content)
+        public void Create(string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -84,20 +84,20 @@ namespace KPMDotNetCore.ConsoleApp
         VALUES
            (@BlogTitle
            ,@BlogAuthor
-           ,@BlogContent)"; 
+           ,@BlogContent)";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogTitle", title);
             cmd.Parameters.AddWithValue("@BlogAuthor", author);
             cmd.Parameters.AddWithValue("@BlogContent", content);
-           int result= cmd.ExecuteNonQuery();
-           
+            int result = cmd.ExecuteNonQuery();
+
             connection.Close();
 
             string message = result > 0 ? "Saving Successful." : "Saving Failed.";
             Console.WriteLine(message);
 
         }
-        public void Update(int id, string title, string author, string content) 
+        public void Update(int id, string title, string author, string content)
         {
             SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
             connection.Open();
@@ -124,7 +124,7 @@ namespace KPMDotNetCore.ConsoleApp
             string query = @"delete from Tbl_Blog where BlogId=@BlogId";
             SqlCommand cmd = new SqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@BlogId", id);
-              int result = cmd.ExecuteNonQuery();
+            int result = cmd.ExecuteNonQuery();
             connection.Close();
             string message = result > 0 ? "Deleting Successful." : "Deleting Failed.";
             Console.WriteLine(message);

@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KPMDotNetCore.ConsoleApp
+namespace KPMDotNetCore.ConsoleApp.Services
 {
     internal static class ConnectionStrings
     {
         public static SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder
-        { 
-            DataSource=".",
+        {
+            DataSource = ".",
             InitialCatalog = "KPMDotNetCore", //database name
             UserID = "sa",
             Password = "sa@123",
-            TrustServerCertificate=true,
+            TrustServerCertificate = true,
         };
     }
 }
