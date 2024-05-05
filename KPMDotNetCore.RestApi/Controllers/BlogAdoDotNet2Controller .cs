@@ -95,48 +95,45 @@ namespace KPMDotNetCore.RestApi.Controllers
             {
                 return NotFound("No data Found.");
             }
+            // Initialize a list to store parameters
+            List<AdoDotNetParameter> parameters = new List<AdoDotNetParameter>();
+
+            // Initialize conditions string
             string conditions = string.Empty;
+
             if (!string.IsNullOrEmpty(blog.BlogTitle))
             {
                 conditions += " [BlogTitle] = @BlogTitle, ";
+                parameters.Add(new AdoDotNetParameter("@BlogTitle", blog.BlogTitle));
             }
             if (!string.IsNullOrEmpty(blog.BlogAuthor))
             {
                 conditions += " [BlogAuthor] = @BlogAuthor, ";
+                parameters.Add(new AdoDotNetParameter("@BlogAuthor", blog.BlogAuthor));
             }
             if (!string.IsNullOrEmpty(blog.BlogContent))
             {
-                conditions += " [BlogContent] = @BlogContent  ";
+                conditions += " [BlogContent] = @BlogContent, ";
+                parameters.Add(new AdoDotNetParameter("@BlogContent", blog.BlogContent));
             }
+
+            // Check if any conditions were added
             if (conditions.Length == 0)
             {
                 return NotFound("No data to update");
             }
-            conditions = conditions.Substring(0, conditions.Length - 2);
-            blog.BlogId = id;
 
-            string query = $@"UPDATE [dbo].[Tbl_Blog] SET {conditions}  WHERE BlogId=@BlogId";
-            
-            //cmd.Parameters.AddWithValue("@BlogId", id);
-            //if (!string.IsNullOrEmpty(blog.BlogTitle))
-            //{
-            //    cmd.Parameters.AddWithValue("@BlogTitle", blog.BlogTitle);
-            //}
-            //if (!string.IsNullOrEmpty(blog.BlogAuthor))
-            //{
-            //    cmd.Parameters.AddWithValue("@BlogAuthor", blog.BlogAuthor);
-            //}
-            //if (!string.IsNullOrEmpty(blog.BlogContent))
-            //{
-            //    cmd.Parameters.AddWithValue("@BlogContent", blog.BlogContent);
-            //}
-            //int result = cmd.ExecuteNonQuery();
-            int result = _adoDotNetService.Execute(query, 
-                new AdoDotNetParameter("@BlogId", id),
-                new AdoDotNetParameter("@BlogTitle", blog.BlogTitle),
-                new AdoDotNetParameter("@BlogAuthor", blog.BlogAuthor),
-                new AdoDotNetParameter("@BlogContent", blog.BlogContent)
-                );
+            // Remove the trailing comma and space
+            conditions = conditions.Substring(0, conditions.Length - 2);
+
+            // Add BlogId parameter
+            parameters.Add(new AdoDotNetParameter("@BlogId", id));
+
+            // Build the SQL query string
+            string query = $@"UPDATE [dbo].[Tbl_Blog] SET {conditions} WHERE BlogId=@BlogId";
+
+            // Execute the query with parameters
+            int result = _adoDotNetService.Execute(query, parameters.ToArray());
 
             string message = result > 0 ? "Updating Successful." : "Updating Failed.";
             return Ok(message);
