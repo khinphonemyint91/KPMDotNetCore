@@ -34,7 +34,7 @@ namespace KPMDotNetCore.ConsoleAppHttpClientExample
 
             if (response.IsSuccessStatusCode)
             {
-                var jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = await response.Content.ReadAsStringAsync();
                 List<BlogDto> lst = JsonConvert.DeserializeObject<List<BlogDto>>(jsonStr)!;
                 foreach (var item in lst)
                 {
@@ -53,7 +53,7 @@ namespace KPMDotNetCore.ConsoleAppHttpClientExample
 
             if (response.IsSuccessStatusCode)
             {
-                var jsonStr = await response.Content.ReadAsStringAsync();
+                string jsonStr = await response.Content.ReadAsStringAsync();
                 var item = JsonConvert.DeserializeObject<BlogDto>(jsonStr)!;
                 Console.WriteLine(JsonConvert.SerializeObject(item));
                 Console.WriteLine($"Title   =>{item.BlogTitle}");

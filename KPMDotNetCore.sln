@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KPMDotNetCore.WebApiWithNLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KPMDotNetCore.ConsoleAppHttpClient", "KPMDotNetCore.ConsoleAppHttpClient\KPMDotNetCore.ConsoleAppHttpClient.csproj", "{D9FA7732-654B-4F64-BA8C-14C01B314C2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPMDotNetCore.ConsoleAppHttpClientExample", "KPMDotNetCore.ConsoleAppHttpClientExample\KPMDotNetCore.ConsoleAppHttpClientExample.csproj", "{F056BFF7-8924-42D2-A4B5-FC7F50FB7AC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KPMDotNetCore.ConsoleAppHttpClientExample", "KPMDotNetCore.ConsoleAppHttpClientExample\KPMDotNetCore.ConsoleAppHttpClientExample.csproj", "{F056BFF7-8924-42D2-A4B5-FC7F50FB7AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPMDotNetCore.ConsoleAppRestClientExample", "KPMDotNetCore.ConsoleAppRestClientExample\KPMDotNetCore.ConsoleAppRestClientExample.csproj", "{90F8308A-5EF0-4253-9FFB-4C63E166208A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{F056BFF7-8924-42D2-A4B5-FC7F50FB7AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F056BFF7-8924-42D2-A4B5-FC7F50FB7AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F056BFF7-8924-42D2-A4B5-FC7F50FB7AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F8308A-5EF0-4253-9FFB-4C63E166208A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F8308A-5EF0-4253-9FFB-4C63E166208A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F8308A-5EF0-4253-9FFB-4C63E166208A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F8308A-5EF0-4253-9FFB-4C63E166208A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
