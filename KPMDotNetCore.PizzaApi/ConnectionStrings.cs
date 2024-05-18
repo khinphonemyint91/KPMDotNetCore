@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KPMDotNetCore.WebApiWithNLayer
+namespace KPMDotNetCore.PizzaApi
 {
     internal static class ConnectionStrings
     {
