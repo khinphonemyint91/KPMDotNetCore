@@ -9,15 +9,22 @@ using System.Reflection.Metadata;
 
 namespace KPMDotNetCore.ConsoleApp.AdoDotNetExamples
 {
-    internal class AdoDotNetExample
+    public class AdoDotNetExample
     {
-        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+        //private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+        //{
+        //    DataSource = ".", //servername
+        //    InitialCatalog = "KPMDotNetCore", //database name
+        //    UserID = "sa",
+        //    Password = "sa@123",
+        //};
+
+        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder;
+
+        public AdoDotNetExample(SqlConnectionStringBuilder sqlConnectionStringBuilder)
         {
-            DataSource = ".", //servername
-            InitialCatalog = "KPMDotNetCore", //database name
-            UserID = "sa",
-            Password = "sa@123",
-        };
+            _sqlConnectionStringBuilder = sqlConnectionStringBuilder;
+        }
 
         public void Read()
         {

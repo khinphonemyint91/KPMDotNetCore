@@ -13,9 +13,16 @@ namespace KPMDotNetCore.RestApi.Controllers
     [ApiController]
     public class BlogController : ControllerBase
     {
+        //private readonly AppDbContext _context;
+        //public BlogController() {
+        //    _context = new AppDbContext();
+        //}
+
         private readonly AppDbContext _context;
-        public BlogController() {
-            _context = new AppDbContext();
+
+        public BlogController(AppDbContext appDbContext)
+        {
+            _context = appDbContext;
         }
 
         [HttpGet]

@@ -14,7 +14,7 @@ namespace KPMDotNetCore.ConsoleApp.Services
             DataSource = ".",
             InitialCatalog = "KPMDotNetCore", //database name
             UserID = "sa",
-            Password = "sa@123",
+            Password = "sasa@123",
             TrustServerCertificate = true,
         };
     }
